@@ -1,0 +1,236 @@
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> -->
+<style>
+    table, th, td {
+  border:1px solid #d1d1d1;
+  text-align: center;
+}
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+</style>
+
+<div class="container-fluid p-0">
+
+    <h1 class="h3 mb-3"><strong>Call Cycle</strong></h1>
+
+    <div class="row" id="callcycle_list">
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-header" style="border-bottom: 3px solid #e3beff;">
+                    <button class="btn btn-primary float-end" onclick="bulkuploadcallcycle();">Bulk Upload Call Cycle</button>
+                    <button class="btn btn-primary float-end" onclick="addcallcycle();" style="margin-right: 5px;">Add Call Cycle</button>
+                </div>
+                <div class="card-body px-4">
+                    <table id="makerTable12" class="table table-striped table-bordered" cellspacing="0" width="100%" style="overflow-x:auto;">
+                        <thead>
+                            <tr style="background: #e3beff;color: #6200af;">
+                                <th>Region</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="callcycle_form">
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-body px-4 col-xl-12 col-12">
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col">
+                            <label class="form-label"><b>Callcycle Date</b></label>
+                            <input type="month" class="form-control" id="s_year_month" name="s_year_month">
+                            </select>
+                        </div>
+                        <div class="col">
+                        </div>
+                        <div class="col">
+                        </div>
+                      </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">Region</label>
+                            <select class="form-control" name="s_region" id="s_region" onchange="getstate(this.value)">
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">State</label>
+                            <select class="form-control" name="s_state" id="s_state" onchange="getasm(this.value)">
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">ASM</label>
+                            <select class="form-control" name="s_asm" id="s_asm" onchange="getcity(this.value)">
+                            </select>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                            <label class="form-label">City</label>
+                            <select class="form-control" name="s_city" id="s_city" onchange="getso(this.value)">
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label class="form-label">SO</label>
+                                <select class="form-control" name="s_so" id="s_so" onchange="getsr(this.value)">
+                                </select>
+                          </div>
+                          <div class="col">
+                            <label class="form-label">SR</label>
+                            <select class="form-control" name="s_sr" id="s_sr">
+                            </select>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                            <div class="col" style="text-align: start;position: relative;top: 26px;">
+                                <button type="button" class="btn active btn-primary" onclick="getbeat()">Get Callcycle</button>
+                              </div>
+                        </div>
+                      </div>
+
+                          <div class="row mb-3" style="margin-top: 3rem;">
+                            <div class="col" >
+                            <table style="width:100%;overflow-x:auto;" id="callcycle_table">
+                              </table>
+                              </div>
+                          </div>
+
+                          <div class="row" id="showbtn">
+							<div class="col-md-6 col-sm-6 ">
+								<button type="button" class="btn active btn-primary btn-sm" onclick="savecallcycle()">Save</button>
+								<button type="button" class="btn active btn-warning btn-sm" id="updateuser" >Reset</button>
+								<button type="reset" id="resetuser" class="btn active btn-danger btn-sm"
+									onclick="back()">Back</button>
+
+							</div>
+						</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="row" id="callcycle_bulk">
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-body px-4 col-xl-12 col-12">
+                    <div class="card-body px-4">
+                      <div class="col-xl-12">
+                        <div class="row mb-3">
+                          <table id="bulkdata"></table>
+                          <!-- <div class="col">
+                            <input class="form-control" type="file" id="input" accept=".xls,.xlsx"  >
+                          </div>
+                          <div class="col">
+                            <label class="form-label">Callcycle</label>
+                            <a href="../callcycle/CALLCYCLE_SAMPLE.xlsx">Download Sample File</a>
+                          </div> -->
+                        </div>
+                      </div>
+
+                        <div class="col-xl-12" style="margin-top: 20px;">
+                            <button type="submit" class="btn btn-primary" onclick="loadoutletdatabyasm()">Load Excel</button>
+                            <button type="submit" class="btn btn-success" id="save_data" disabled>Save Data</button>
+                            <button type="submit" class="btn btn-danger" onclick="back()">Back</button>
+                            <button type="submit" class="btn btn-warning" onclick="cleardata()">Clear</button>
+                        </div>
+                    </div>
+                    <div style="overflow-x:auto;">
+                        <table id="excel_data"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="modal fade" id="swap_outlet" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Swap Outlet</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body px-4 col-xl-12 col-12">
+                    <form>
+                        <div class="row mb-3">
+                          <div class="col">
+                            <label class="form-label">From Date</label>
+                            <input type="datetime-local" class="form-control" id="d_from_date" name="d_from_date">
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                        <div class="col">
+                          <label class="form-label">Beat In</label>
+                          <span id="beatname" style="font-size: 15px;font-weight: bolder;font-style: italic;color: #6200AF;"></span>
+                        </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col">
+                            <label class="form-label">Swap To Beat</label>
+                            <select class="form-control" name="swap_beat" id="swap_beat">
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col">
+                            <label class="form-label">Reason</label>
+                            <textarea class="form-control" name="swap_reason" id="swap_reason"></textarea>
+                          </div>
+                        </div>
+                      </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="delete_outlet" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete Outlet</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body px-4 col-xl-12 col-12">
+                    <div class="row mb-3">
+                        <div class="col">
+                          <label class="form-label">Are you sure you want to inactive this outlet ?</label>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<!-- Modal -->
+
+<script>
+    $('#callcycle_list').show();
+    $('#callcycle_form').hide();
+    $('#callcycle_bulk').hide();
+</script>
+<script src="../static/js/callcycle.js"></script>
+
+
+
+

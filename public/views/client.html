@@ -1,0 +1,147 @@
+
+
+<div class="container-fluid p-0">
+
+    <h1 class="h3 mb-3"><strong>Client</strong>Master</h1>
+
+    <div class="row" id="client_list">
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-header" style="border-bottom: 3px solid #e3beff;">
+                    <button class="btn btn-primary float-end" onclick="addclient();">Add Client</button>
+                    <button class="btn btn-primary float-start" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../src/img/icons/filter (1).png" class="float-start" style="height: 20px;width: 20px;" /><b style="margin-left: 10px;">Filter</b></button>
+                    
+                    
+                </div>
+                <div class="card-body px-4">
+                    <table id="makerTable12" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr style="background: #e3beff;color: #6200af;">
+                                <th>Client Name</th>
+                                <th>Business</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="client_form">
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h3><b style="color: #6200af;">Please Enter User Details !</b></h3>
+                </div>
+                <div class="card-body px-4 col-xl-12 col-12">
+                    <form>
+                        <div class="row mb-3">
+                          <div class="col">
+                            <label class="form-label">Client Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Client Name" id="s_client_name" name="s_client_name">
+                          </div>
+                          <div class="col">
+                            <label class="form-label">Business Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Business Name" name="s_business" id="s_business">
+                          </div>
+                        </div>
+                      </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" onclick="adduser();">Submit</button>
+                    <button class="btn btn-danger" onclick="back();">Back</button>
+                    <button class="btn btn-warning" onclick="cleardata();">Clear</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Filters</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="card-body px-4 col-xl-12 col-12">
+                <form>
+                    <div class="row mb-3">
+                      <div class="col">
+                        <label class="form-label">From Date</label>
+                        <input type="datetime-local" class="form-control" id="d_from_date" name="d_from_date">
+                      </div>
+                      <div class="col">
+                        <label class="form-label">To Date</label>
+                        <input type="datetime-local" class="form-control" name="d_to_date" id="s_business">
+                      </div>
+                    </div>
+                      <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label">Region</label>
+                                <select class="form-control" name="s_region" id="s_region">
+                                    <option value="All">All</option>
+                                    <option value="EAST">EAST</option>
+                                    <option value="WEST">WEST</option>
+                                    <option value="NORTH">NORTH</option>
+                                    <option value="SOUTH">SOUTH</option>
+                                </select>
+                          </div>
+                          <div class="col">
+                            <label class="form-label">Covered</label>
+                                <select class="form-control" name="s_covered" id="s_covered" >
+                                    <option value="All">All</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Kerala">Kerala</option>
+                                </select>
+                          </div>
+
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label">City</label>
+                                <select class="form-control" name="s_city" id="s_city" >
+                                    <option value="All">All</option>
+                                    <option value="EAST">EAST</option>
+                                    <option value="WEST">WEST</option>
+                                    <option value="NORTH">NORTH</option>
+                                    <option value="SOUTH">SOUTH</option>
+                                </select>
+                          </div>
+                          <div class="col">
+                            <label class="form-label" name="s_state" id="s_state">State</label>
+                                <select class="form-control">
+                                    <option value="All">All</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                </select>
+                          </div>
+                      </div>
+                  </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-danger" onclick="clearfilter();">Reset</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    $('#client_list').show();
+    $('#client_form').hide();
+</script>
+
+<script src="../static/js/client-master.js"></script>
+

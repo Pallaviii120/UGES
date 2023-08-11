@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"> -->
+
+	<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" /> -->
+	<title>NextG DMS</title>
+
+	<link href="./static/css/app.css" rel="stylesheet">
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./alertifyjs/css/alertify.rtl.css">
+  <link rel="stylesheet" href="./alertifyjs/css/themes/default.rtl.css">
+  <link rel="stylesheet" href="./css-loader-master/dist/css-loader.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+  <!-- <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script> -->
+
+</head>
+
+<body>
+  <div id="loader" class="loader loader-bar" data-rounded data-text="Loading"></div>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand">
+          <span class="align-middle" id="businessname"></span>
+        </a>
+
+				<ul class="sidebar-nav">
+				</ul>
+			</div>
+		</nav>
+
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+            <li class="nav-item dropdown" style="margin-right: 15px;">
+              <b style="font-weight: bolder;"><span>Last Refreshed : <label id="synctime" class="lastrefresh"></label></span></b></li>
+						<li class="nav-item dropdown">
+                            <b style="font-weight: bolder;"><span id="username"></span></b>&nbsp;&nbsp; |&nbsp;&nbsp; <a onclick="refresh();"><i class="align-middle me-2" data-feather="refresh-ccw" style="font-weight: bolder;"></i> <span class="align-middle"></span></a> |&nbsp;&nbsp; <a href="/logout"><i class="align-middle me-2" data-feather="log-out" style="font-weight: bolder;"></i> <span class="align-middle"></span></a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+            <main class="content" id="maincontainer"></main>
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="https://kosqu.com/" target="_blank"><strong>Kosqu</strong></a> &copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+    <script src="assets/Sammy/vendor/jquery.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="assets/Sammy/lib/sammy.js"></script>
+    <script src="./static/js/app.js"></script>
+    <script src="./static/js/main.js"></script>
+    <script src="./alertifyjs/alertify.js"></script>
+
+
+
+
+
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SAMMY~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+    <script type="text/javascript" charset="utf-8">
+        (function($) {
+            debugger;
+            var menuuu = '',
+            url = "/main#/dashboard"
+            debugger;
+            switch(localStorage.getItem('position')) {
+
+              case 'AREA SALES EXECUTIVE' || 'AREA SALES MANAGER':
+              var app = $.sammy(function() {
+                        this.get('#/dashboard', function() {
+                            $('#maincontainer').load("../views/dashboard.html");
+                        });
+                        // this.get('#/user-master', function() {
+                        //     $('#maincontainer').load("../views/user-master.html");
+                        // });
+                        // this.get('#/header-name-master', function() {
+                        //     $('#maincontainer').load("../views/header-name-master.html");
+                        // });
+                        // this.get('#/header-option-master', function() {
+                        //     $('#maincontainer').load("../views/header-option-master.html");
+                        // });
+                        // this.get('#/client-registration', function() {
+                        //     $('#maincontainer').load("../views/client.html");
+                        // });
+                        // this.get('#/user-header-mapping', function() {
+                        //     $('#maincontainer').load("../views/user-header-mapping.html");
+                        // });
+                        this.get('#/callcycle', function() {
+                            $('#maincontainer').load("../views/callcycle.html");
+                        });
+
+                        menuuu += `<li class="sidebar-header">
+						Masters
+					</li>
+
+					<li class="sidebar-item active" id="dashboard" onclick="highlight('dashboard')">
+						<a class="sidebar-link" href="#/dashboard">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+            </a>
+					</li>
+          <li class="sidebar-item active" id="callcycle" onclick="highlight('callcycle')">
+						<a class="sidebar-link" href="#/callcycle">
+              <!--<i class="align-middle" data-feather="sliders"></i> <span class="align-middle"></span>-->
+              <i class="align-middle me-2" data-feather="repeat"></i> <span class="align-middle">Call Cycle</span>
+            </a>
+					</li>
+          `;
+            });
+
+              break;
+              case 'null':
+                debugger;
+              var app = $.sammy(function() {
+                        this.get('#/dashboard', function() {
+                            $('#maincontainer').load("../views/dashboard.html");
+                        });
+                        this.get('#/user-master', function() {
+                            $('#maincontainer').load("../views/user-master.html");
+                        });
+                        // this.get('#/header-name-master', function() {
+                        //     $('#maincontainer').load("../views/header-name-master.html");
+                        // });
+                        // this.get('#/header-option-master', function() {
+                        //     $('#maincontainer').load("../views/header-option-master.html");
+                        // });
+                        // this.get('#/client-registration', function() {
+                        //     $('#maincontainer').load("../views/client.html");
+                        // });
+                        // this.get('#/user-header-mapping', function() {
+                        //     $('#maincontainer').load("../views/user-header-mapping.html");
+                        // });
+                        this.get('#/callcycle', function() {
+                            $('#maincontainer').load("../views/callcycle.html");
+                        });
+
+                        menuuu += `<li class="sidebar-header">
+						Masters
+					</li>
+
+					<li class="sidebar-item active" id="dashboard" onclick="highlight('dashboard')">
+						<a class="sidebar-link" href="#/dashboard">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+            </a>
+					</li>
+          <li class="sidebar-item active" id="callcycle" onclick="highlight('callcycle')">
+						<a class="sidebar-link" href="#/callcycle">
+              <i class="align-middle me-2" data-feather="repeat"></i> <span class="align-middle">Call Cycle</span>
+            </a>
+					</li>
+          <li class="sidebar-item active" id="user-master" onclick="highlight('user-master')">
+						<a class="sidebar-link" href="#/user-master">
+              <i class="align-middle me-2" data-feather="user"></i> <span class="align-middle">User Master</span>
+            </a>
+					</li>
+          `;
+            });
+
+              break;
+              default:
+              var app = $.sammy(function() {
+                        this.get('#/dashboard', function() {
+                            $('#maincontainer').load("../views/dashboard.html");
+                        });
+                        this.get('#/profile', function() {
+                            $('#maincontainer').load("../views/pages-profile.html");
+                        });
+                        menuuu += `<li class="sidebar-header">
+						Personal Info
+					</li>
+
+					<li class="sidebar-item active" id="dashboard" onclick="highlight('dashboard')">
+						<a class="sidebar-link" href="#/dashboard">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item" id="profile" onclick="highlight('profile')">
+						<a class="sidebar-link" href="#/profile">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+            </a>
+					</li>
+					<li class="sidebar-header">
+						Tools & Components
+					</li>
+
+					<li class="sidebar-item" onclick="highlight('Buttons')">
+						<a class="sidebar-link" href="ui-buttons.html">
+              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item" onclick="highlight('Forms')">
+						<a class="sidebar-link" href="ui-forms.html">
+              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="ui-cards.html">
+              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="ui-typography.html">
+              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="icons-feather.html">
+              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
+            </a>
+					</li>
+
+					<li class="sidebar-header">
+						Plugins & Addons
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="charts-chartjs.html">
+              <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="maps-google.html">
+              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+            </a>
+					</li>`;
+            });
+
+            }
+            
+
+            $(function() {
+                menuuu += `
+                <li class="sidebar-header">
+						Application
+					</li>
+                <li class="sidebar-item">
+						<a class="sidebar-link" href="/logout">
+              <i class="align-middle me-2" data-feather="log-out"></i> <span class="align-middle">Logout</span>
+            </a>
+					</li>`;
+                $(".sidebar-nav").append(menuuu);
+                $("#username").text(localStorage.getItem("userName"));
+                $("#businessname").text((localStorage.getItem("userName")).toUpperCase());
+                // $("#proimg").attr("src", src);
+                app.run(url);
+                highlight(name);
+            });
+        })(jQuery);
+
+    </script>
+
+<script>
+  debugger;
+  var name = window.location.href.split('#/')[1];
+  highlight=(id)=>{
+    $(".sidebar-item").removeClass("active");
+    if(id==undefined){
+      var id = window.location.href.split('#/')[1];
+    $("#"+id).addClass("active");
+    }else{
+    // var id = window.location.href.split('#/')[1];
+    $("#"+id).addClass("active");
+    }
+
+  }
+  // 
+</script>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,298 @@
+
+<style>
+    table, th, td {
+  border:1px solid #d1d1d1;
+  text-align: center;
+}
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+</style>
+
+<div class="container-fluid p-0">
+
+    <h1 class="h3 mb-3"><strong>User</strong>Master</h1>
+
+    <div class="row" id="user_list">
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-header" style="border-bottom: 3px solid #e3beff;">
+                    <button class="btn btn-primary float-end" onclick="adduser();">Add User</button>
+                    <button class="btn btn-primary float-end" onclick="addbulkuser();" style="margin-right: 5px;">Add Bulk User</button>
+                </div>
+                <div class="card-body px-4">
+                    <table id="makerTable12" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr style="background: #e3beff;color: #6200af;">
+                                <th>Full Name</th>
+                                <th>Username</th>
+                                <th>Position Name</th>
+                                <th>Position Type</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="user_form">
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h3><b style="color: #6200af;">Please Enter User Details !</b></h3>
+                </div>
+                <div class="card-body px-4 col-xl-12 col-12">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Username</label>
+                              <input type="text" class="form-control" placeholder="Enter Username" name="s_username" id="s_username">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Client</label>
+                                <select class="form-select mb-3" placeholder="Select Client" name="s_client" id="s_client">
+                                    <option selected="">Select Client</option>
+                                    <option>Hell Energy</option>
+                                    <option>FMCG</option>
+                                    <option>MCAFFEINE</option>
+                                  </select>
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                              <label class="form-label">Full Name</label>
+                              <input type="text" class="form-control" placeholder="Enter Full Name" name="s_name" id="s_name">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Position</label>
+                                <select class="form-select mb-3" name="s_position" id="s_position">
+                                    <option selected="">Select Position</option>
+                                    <option>One</option>
+                                    <option>Two</option>
+                                    <option>Three</option>
+                                  </select>
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                              <label class="form-label">Email</label>
+                              <input type="text" class="form-control" placeholder="Enter email" name="s_email" id="s_email">
+                            </div>
+                            <div class="col">
+                              <label class="form-label">Password</label>
+                              <input type="password" class="form-control" placeholder="Enter password" name="s_pass" id="s_pass">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Position Type</label>
+                                <select class="form-select mb-3" id="s_position_type" name="s_position_type">
+                                    <option selected="">Select Position Type</option>
+                                    <option>Regular</option>
+                                  </select>
+                            </div>
+                            <div class="col">
+                              <label class="form-label">Position Name</label>
+                              <input type="text" class="form-control" placeholder="Enter Position Name" name="s_position_name" id="s_position_name">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Position Code</label>
+                                <input type="text" class="form-control" placeholder="Enter Position Code" name="s_position_code" id="s_position_code">
+                            </div>
+                            <div class="col">
+                              <label class="form-label">Date Of Joining</label>
+                              <input type="datetime-local" class="form-control" name="d_doj" id="d_doj">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Contact Number</label>
+                                <input type="number" class="form-control" placeholder="Enter Contact Number" name="n_contact_no" id="n_contact_no">
+                            </div>
+                            <div class="col">
+                              <label class="form-label">Address</label>
+                              <textarea class="form-control" name="s_address" id="s_address" placeholder="Enter Address"></textarea>
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">City</label>
+                                <input type="text" class="form-control" placeholder="Enter City" name="s_city" id="s_city">
+                            </div>
+                            <div class="col">
+                              <label class="form-label">State</label>
+                              <input type="text" class="form-control" placeholder="Enter State" name="s_state" id="s_state">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Region</label>
+                                <input type="text" class="form-control" placeholder="Enter Region" name="s_region" id="s_region">
+                            </div>
+                            <div class="col">
+                              <label class="form-label">Employee Code</label>
+                              <input type="text" class="form-control" placeholder="Enter Employee Code" name="s_emp_code" id="s_emp_code">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Payroll</label>
+                                <input type="text" class="form-control" placeholder="Enter Payroll" name="s_payroll" id="s_payroll">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Status</label>
+                                <select class="form-select mb-3" name="s_status" id="s_status">
+                                    <option selected="">Select Status</option>
+                                    <option>Active</option>
+                                    <option>In-Active</option>
+                                  </select>
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Process</label>
+                                <select class="form-select mb-3" name="s_process" id="s_process">
+                                    <option selected="">Select Process Status</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                  </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Validated</label>
+                                <select class="form-select mb-3" name="s_validate" id="s_validate" >
+                                    <option selected="">Select Validate Status</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                  </select>
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Channel</label>
+                                <select class="form-select mb-3" name="s_channel" id="s_channel"> 
+                                    <option selected="">Select Channel</option>
+                                    <option>GT</option>
+                                    <option>MT</option>
+                                  </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Send Mail</label>
+                                <select class="form-select mb-3" name="s_send_mail" id="s_send_mail">
+                                    <option selected="">Select Mail Status</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                  </select>
+                            </div>
+
+                          </div>
+
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Remark</label>
+                                <textarea class="form-control" name="s_remark" id="s_remark" placeholder="Enter Remark"></textarea>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Brand</label>
+                                <input type="text" class="form-control" placeholder="Enter Brand" name="s_brand" id="s_brand">
+                            </div>
+                            
+                          </div>
+
+                          <div class="row" style="text-align: center; font-size: 15px;font-weight: bolder;background: #6200AF;color: white;margin-top: 35px;">
+                            <label>Levels</label>
+                        </div>
+                          <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Level 2</label>
+                                <select class="form-select mb-3" name="s_lvl2" id="s_lvl2">
+                                    <option selected="">Select Level 2</option>
+                                    <option>Regular</option>
+                                  </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Level 3</label>
+                                <select class="form-select mb-3" name="s_lvl3" id="s_lvl3">
+                                    <option selected="">Select Level 3</option>
+                                    <option>Regular</option>
+                                  </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Level 4</label>
+                                <select class="form-select mb-3" name="s_lvl4" id="s_lvl4">
+                                    <option selected="">Select Level 4</option>
+                                    <option>Regular</option>
+                                  </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Level 5</label>
+                                <select class="form-select mb-3" name="s_lvl5" id="s_lvl5">
+                                    <option selected="">Select Level 5</option>
+                                    <option>Regular</option>
+                                  </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Level 6</label>
+                                <select class="form-select mb-3" name="s_lvl6" id="s_lvl6">
+                                    <option selected="">Select Level 6</option>
+                                    <option>Regular</option>
+                                  </select>
+                            </div>
+                          </div>
+                      </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" onclick="adduser();">Submit</button>
+                    <button class="btn btn-danger" onclick="back();">Back</button>
+                    <button class="btn btn-warning" onclick="cleardata();">Clear</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row" id="user_bulk">
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-body px-4 col-xl-12 col-12">
+                    <div class="card-body px-4">
+                      <div class="col-xl-12">
+                        <div class="row mb-3">
+                          <div class="col">
+                            <input class="form-control" type="file" id="input" accept=".xls,.xlsx"  >
+                          </div>
+                          <!-- <div class="col">
+                            <label class="form-label">Callcycle</label>
+                            <a href="../callcycle/CALLCYCLE_SAMPLE.xlsx">Download Sample File</a>
+                          </div> -->
+                        </div>
+                      </div>
+
+                        <div class="col-xl-12" style="margin-top: 20px;">
+                            <button class="btn btn-primary" id="load_excel">Load Excel</button>
+                            <button class="btn btn-success" id="save_data" disabled>Save Data</button>
+                            <button class="btn btn-danger" onclick="back()">Back</button>
+                            <button class="btn btn-warning" onclick="cleardata()">Clear</button>
+                        </div>
+                    </div>
+                    <div style="overflow-x:auto;">
+                        <table id="excel_data"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+<script>
+    $('#user_list').show();
+    $('#user_form').hide();
+    $('#user_bulk').hide();
+</script>
+<script src="../static/js/user-master.js"></script>
