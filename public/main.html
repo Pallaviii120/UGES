@@ -2,78 +2,84 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"> -->
 
-	<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" /> -->
-	<title>NextG DMS</title>
+    <title>UGES</title>
 
-	<link href="./static/css/app.css" rel="stylesheet">
-  <!-- FONT AWESOME -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./alertifyjs/css/alertify.rtl.css">
-  <link rel="stylesheet" href="./alertifyjs/css/themes/default.rtl.css">
-  <link rel="stylesheet" href="./css-loader-master/dist/css-loader.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
-  <!-- <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script> -->
+    <link href="./static/css/app.css" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./alertifyjs/css/alertify.rtl.css">
+    <link rel="stylesheet" href="./alertifyjs/css/themes/default.rtl.css">
+    <link rel="stylesheet" href="./css-loader-master/dist/css-loader.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+
+    <!-- <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script> -->
 
 </head>
 
 <body>
-  <div id="loader" class="loader loader-bar" data-rounded data-text="Loading"></div>
-	<div class="wrapper">
-		<nav id="sidebar" class="sidebar js-sidebar">
-			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand">
-          <span class="align-middle" id="businessname"></span>
-        </a>
+    <div id="loader" class="loader loader-bar" data-rounded data-text="Loading"></div>
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar js-sidebar">
+            <div class="sidebar-content js-simplebar">
+                <a class="sidebar-brand">
+                    <span class="align-middle" id="businessname"></span>
+                </a>
 
-				<ul class="sidebar-nav">
-				</ul>
-			</div>
-		</nav>
+                <ul class="sidebar-nav">
+                </ul>
+            </div>
+        </nav>
 
-		<div class="main">
-			<nav class="navbar navbar-expand navbar-light navbar-bg">
-				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+        <div class="main">
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
+                <a class="sidebar-toggle js-sidebar-toggle">
+                    <i class="hamburger align-self-center"></i>
+                </a>
 
-				<div class="navbar-collapse collapse">
-					<ul class="navbar-nav navbar-align">
-            <li class="nav-item dropdown" style="margin-right: 15px;">
-              <b style="font-weight: bolder;"><span>Last Refreshed : <label id="synctime" class="lastrefresh"></label></span></b></li>
-						<li class="nav-item dropdown">
-                            <b style="font-weight: bolder;"><span id="username"></span></b>&nbsp;&nbsp; |&nbsp;&nbsp; <a onclick="refresh();"><i class="align-middle me-2" data-feather="refresh-ccw" style="font-weight: bolder;"></i> <span class="align-middle"></span></a> |&nbsp;&nbsp; <a href="/logout"><i class="align-middle me-2" data-feather="log-out" style="font-weight: bolder;"></i> <span class="align-middle"></span></a>
-						</li>
-					</ul>
-				</div>
-			</nav>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav navbar-align">
+                        <!-- <li class="nav-item dropdown" style="margin-right: 15px;">
+              <b style="font-weight: bolder;"><span>Last Refreshed : <label id="synctime" class="lastrefresh"></label></span></b></li> -->
+                        <li class="nav-item dropdown">
+                            <b style="font-weight: bolder;"><span id="username"></span></b>&nbsp;&nbsp;
+                            <!-- |&nbsp;&nbsp; <a onclick="refresh();"><i class="align-middle me-2" data-feather="refresh-ccw" style="font-weight: bolder;"></i> <span class="align-middle"></span></a>  -->
+                            |&nbsp;&nbsp; <a href="/logout"><i class="align-middle me-2" data-feather="log-out"
+                                    style="font-weight: bolder;"></i> <span class="align-middle"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
             <main class="content" id="maincontainer"></main>
 
-			<footer class="footer">
-				<div class="container-fluid">
-					<div class="row text-muted">
-						<div class="col-6 text-start">
-							<p class="mb-0">
-								<a class="text-muted" href="https://kosqu.com/" target="_blank"><strong>Kosqu</strong></a> &copy;
-							</p>
-						</div>
-						<div class="col-6 text-end">
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a class="text-muted" href="https://kosqu.com/"
+                                    target="_blank"><strong>Kosqu</strong></a> &copy;
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
     <script src="assets/Sammy/vendor/jquery.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
@@ -98,182 +104,459 @@
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SAMMY~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
     <script type="text/javascript" charset="utf-8">
-        (function($) {
+        (function ($) {
             debugger;
             var menuuu = '',
-            url = "/main#/dashboard"
+                url = "/main#/dashboard_admin"
             debugger;
-            switch(localStorage.getItem('position')) {
+            if (localStorage.getItem('role') == 'admin') {
+                switch (localStorage.getItem('role')) {
 
-              case 'AREA SALES EXECUTIVE' || 'AREA SALES MANAGER':
-              var app = $.sammy(function() {
-                        this.get('#/dashboard', function() {
-                            $('#maincontainer').load("../views/dashboard.html");
-                        });
-                        // this.get('#/user-master', function() {
-                        //     $('#maincontainer').load("../views/user-master.html");
-                        // });
-                        // this.get('#/header-name-master', function() {
-                        //     $('#maincontainer').load("../views/header-name-master.html");
-                        // });
-                        // this.get('#/header-option-master', function() {
-                        //     $('#maincontainer').load("../views/header-option-master.html");
-                        // });
-                        // this.get('#/client-registration', function() {
-                        //     $('#maincontainer').load("../views/client.html");
-                        // });
-                        // this.get('#/user-header-mapping', function() {
-                        //     $('#maincontainer').load("../views/user-header-mapping.html");
-                        // });
-                        this.get('#/callcycle', function() {
-                            $('#maincontainer').load("../views/callcycle.html");
-                        });
+                    case 'admin':
+                        var app = $.sammy(function () {
+                            this.get('#/dashboard_admin', function () {
+                                $('#maincontainer').load("../views/dashboard_admin.html");
+                            });
+                            this.get('#/log', function () {
+                                $('#maincontainer').load("../views/admin_logs.html");
+                            });
+                            this.get('#/callcycle', function () {
+                                $('#maincontainer').load("../views/callcycle_admin.html");
+                            });
+                            this.get('#/user-master', function () {
+                                $('#maincontainer').load("../views/user-master.html");
+                            });
+                            this.get('#/alarm-inhibit', function () {
+                                $('#maincontainer').load("../views/alarm-inhibit.html");
+                            });
+                            this.get('#/interlock', function () {
+                                $('#maincontainer').load("../views/interlock.html");
+                            });
+                            this.get('#/callcycle', function () {
+                                $('#maincontainer').load("../views/callcycle.html");
+                            });
 
-                        menuuu += `<li class="sidebar-header">
-						Masters
-					</li>
+                            this.get('#/allbeatsoroginal', function () {
+                                $('#maincontainer').load("../views/all-beats-original.html");
+                            });
 
-					<li class="sidebar-item active" id="dashboard" onclick="highlight('dashboard')">
-						<a class="sidebar-link" href="#/dashboard">
+                            this.get('#/beatmapping', function () {
+                                $('#maincontainer').load("../views/user_beat_mapping.html");
+                            });
+
+                            this.get('#/distributormaster', function () {
+                                $('#maincontainer').load("../views/distributor_master.html");
+                            });
+                            this.get('#/beatdistri_mapping', function () {
+                                $('#maincontainer').load("../views/beat_distributor_mapping.html");
+                            });
+
+
+                            // changes
+                            this.get('#/view_tickets', function () {
+                                $('#maincontainer').load("../views/view_tickets.html");
+                            });
+                            this.get('#/create_ticket', function () {
+                                $('#maincontainer').load("../views/create_ticket.html");
+                            });
+
+
+
+
+
+                            menuuu += `<li class="sidebar-header">
+              Masters
+              </li>
+
+              <li class="sidebar-item active" id="dashboard_admin" onclick="highlight('dashboard_admin')">
+              <a class="sidebar-link" href="#/dashboard_admin">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
-					</li>
-          <li class="sidebar-item active" id="callcycle" onclick="highlight('callcycle')">
-						<a class="sidebar-link" href="#/callcycle">
-              <!--<i class="align-middle" data-feather="sliders"></i> <span class="align-middle"></span>-->
-              <i class="align-middle me-2" data-feather="repeat"></i> <span class="align-middle">Call Cycle</span>
-            </a>
-					</li>
-          `;
-            });
+              </a>
+              </li>
+           
+            </li>
 
-              break;
-              case 'null':
-                debugger;
-              var app = $.sammy(function() {
-                        this.get('#/dashboard', function() {
-                            $('#maincontainer').load("../views/dashboard.html");
-                        });
-                        this.get('#/user-master', function() {
-                            $('#maincontainer').load("../views/user-master.html");
-                        });
-                        // this.get('#/header-name-master', function() {
-                        //     $('#maincontainer').load("../views/header-name-master.html");
-                        // });
-                        // this.get('#/header-option-master', function() {
-                        //     $('#maincontainer').load("../views/header-option-master.html");
-                        // });
-                        // this.get('#/client-registration', function() {
-                        //     $('#maincontainer').load("../views/client.html");
-                        // });
-                        // this.get('#/user-header-mapping', function() {
-                        //     $('#maincontainer').load("../views/user-header-mapping.html");
-                        // });
-                        this.get('#/callcycle', function() {
-                            $('#maincontainer').load("../views/callcycle.html");
+
+        </li>
+
+              <li class="sidebar-item active" id="view_tickets" onclick="highlight('view_tickets')">
+              <a class="sidebar-link" href="#/view_tickets">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">View Tickets</span>
+              </a>
+              </li>
+
+                <li class="sidebar-item active" id="create_ticket" onclick="highlight('create_ticket')">
+              <a class="sidebar-link" href="#/create_ticket">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Create Tickets</span>
+              </a>
+              </li>
+           
+            </li>
+        
+      
+                  
+              `;
                         });
 
-                        menuuu += `<li class="sidebar-header">
-						Masters
-					</li>
+                        break;
 
-					<li class="sidebar-item active" id="dashboard" onclick="highlight('dashboard')">
-						<a class="sidebar-link" href="#/dashboard">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
-					</li>
-          <li class="sidebar-item active" id="callcycle" onclick="highlight('callcycle')">
-						<a class="sidebar-link" href="#/callcycle">
-              <i class="align-middle me-2" data-feather="repeat"></i> <span class="align-middle">Call Cycle</span>
-            </a>
-					</li>
-          <li class="sidebar-item active" id="user-master" onclick="highlight('user-master')">
-						<a class="sidebar-link" href="#/user-master">
-              <i class="align-middle me-2" data-feather="user"></i> <span class="align-middle">User Master</span>
-            </a>
-					</li>
-          `;
-            });
-
-              break;
-              default:
-              var app = $.sammy(function() {
-                        this.get('#/dashboard', function() {
-                            $('#maincontainer').load("../views/dashboard.html");
-                        });
-                        this.get('#/profile', function() {
-                            $('#maincontainer').load("../views/pages-profile.html");
-                        });
-                        menuuu += `<li class="sidebar-header">
-						Personal Info
-					</li>
-
-					<li class="sidebar-item active" id="dashboard" onclick="highlight('dashboard')">
-						<a class="sidebar-link" href="#/dashboard">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item" id="profile" onclick="highlight('profile')">
-						<a class="sidebar-link" href="#/profile">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-            </a>
-					</li>
-					<li class="sidebar-header">
-						Tools & Components
-					</li>
-
-					<li class="sidebar-item" onclick="highlight('Buttons')">
-						<a class="sidebar-link" href="ui-buttons.html">
-              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item" onclick="highlight('Forms')">
-						<a class="sidebar-link" href="ui-forms.html">
-              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-cards.html">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
-              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons-feather.html">
-              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-            </a>
-					</li>
-
-					<li class="sidebar-header">
-						Plugins & Addons
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
-              <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
-              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
-            </a>
-					</li>`;
-            });
+                }
 
             }
-            
 
-            $(function() {
+            else if (localStorage.getItem('role') == 'user') {
+                switch (localStorage.getItem('role')) {
+
+                    case 'user':
+                        var app = $.sammy(function () {
+                            this.get('#/wind_farm', function () {
+                                $('#maincontainer').load("../views/wind_farm.html");
+                            });
+                            this.get('#/view_report', function () {
+                                $('#maincontainer').load("../views/view_report.html");
+                            });
+
+
+
+                            this.get('#/dashboard_admin', function () {
+                                $('#maincontainer').load("../views/dashboard_admin.html");
+                            });
+                            this.get('#/log', function () {
+                                $('#maincontainer').load("../views/admin_logs.html");
+                            });
+                            this.get('#/callcycle', function () {
+                                $('#maincontainer').load("../views/callcycle_admin.html");
+                            });
+                            this.get('#/user-master', function () {
+                                $('#maincontainer').load("../views/user-master.html");
+                            });
+                            this.get('#/alarm-inhibit', function () {
+                                $('#maincontainer').load("../views/alarm-inhibit.html");
+                            });
+                            this.get('#/interlock', function () {
+                                $('#maincontainer').load("../views/interlock.html");
+                            });
+                            this.get('#/callcycle', function () {
+                                $('#maincontainer').load("../views/callcycle.html");
+                            });
+
+                            this.get('#/allbeatsoroginal', function () {
+                                $('#maincontainer').load("../views/all-beats-original.html");
+                            });
+
+                            this.get('#/beatmapping', function () {
+                                $('#maincontainer').load("../views/user_beat_mapping.html");
+                            });
+
+                            this.get('#/distributormaster', function () {
+                                $('#maincontainer').load("../views/distributor_master.html");
+                            });
+                            this.get('#/beatdistri_mapping', function () {
+                                $('#maincontainer').load("../views/beat_distributor_mapping.html");
+                            });
+
+
+                            // changes
+                            this.get('#/view_tickets', function () {
+                                $('#maincontainer').load("../views/view_tickets.html");
+                            });
+                            this.get('#/create_ticket', function () {
+                                $('#maincontainer').load("../views/create_ticket.html");
+                            });
+
+
+
+
+
+                            menuuu += `<li class="sidebar-header">
+              Report
+              </li>
+
+           
+           
+            </li>
+
+
+        </li>
+
+            
+           
+                <li class="sidebar-item active" id="wind_farm" onclick="highlight('wind_farm')">
+                <a class="sidebar-link" href="#/wind_farm">
+                <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Wind Farm Report</span>
+                </a>
+                </li>
+
+                   <li class="sidebar-item active" id="view_report" onclick="highlight('view_report')">
+                <a class="sidebar-link" href="#/view_report">
+                <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">View Farm Report</span>
+                </a>
+                </li>
+
+            </li>
+        
+      
+                  
+              `;
+                        });
+
+                        break;
+
+                    //             case 'AREA SALES EXECUTIVE':
+                    //             var app = $.sammy(function () {
+                    //                 this.get('#/dashboard', function () {
+                    //                     $('#maincontainer').load("../views/dashboard.html");
+                    //                 });
+                    //                 // this.get('#/user-master', function() {
+                    //                 //     $('#maincontainer').load("../views/user-master.html");
+                    //                 // });
+                    //                 // this.get('#/header-name-master', function() {
+                    //                 //     $('#maincontainer').load("../views/header-name-master.html");
+                    //                 // });
+                    //                 // this.get('#/header-option-master', function() {
+                    //                 //     $('#maincontainer').load("../views/header-option-master.html");
+                    //                 // });
+                    //                 // this.get('#/client-registration', function() {
+                    //                 //     $('#maincontainer').load("../views/client.html");
+                    //                 // });
+                    //                 // this.get('#/user-header-mapping', function() {
+                    //                 //     $('#maincontainer').load("../views/user-header-mapping.html");
+                    //                 // });
+                    //                 this.get('#/callcycle', function () {
+                    //                     $('#maincontainer').load("../views/callcycle.html");
+                    //                 });
+
+                    //                 menuuu += `<li class="sidebar-header">
+                    //   Masters
+                    //   </li>
+
+                    //   <li class="sidebar-item active" id="dashboard" onclick="highlight('dashboard')">
+                    //   <a class="sidebar-link" href="#/dashboard">
+                    //   <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    //   </a>
+                    //   </li>
+                    //   <li class="sidebar-item active" id="callcycle" onclick="highlight('callcycle')">
+                    //   <a class="sidebar-link" href="#/callcycle">
+                    //   <!--<i class="align-middle" data-feather="sliders"></i> <span class="align-middle"></span>-->
+                    //   <i class="align-middle me-2" data-feather="repeat"></i> <span class="align-middle">Call Cycle</span>
+                    //   </a>
+                    //   </li>
+                    //   `;
+                    //             });
+
+                    //             break;
+                    //         case 'RSM':
+                    //             debugger;
+                    //             var app = $.sammy(function () {
+                    //                 this.get('#/dashboard', function () {
+                    //                     $('#maincontainer').load("../views/dashboard.html");
+                    //                 });
+                    //                 this.get('#/user-master', function () {
+                    //                     $('#maincontainer').load("../views/user-master.html");
+                    //                 });
+                    //                 // this.get('#/header-name-master', function() {
+                    //                 //     $('#maincontainer').load("../views/header-name-master.html");
+                    //                 // });
+                    //                 // this.get('#/header-option-master', function() {
+                    //                 //     $('#maincontainer').load("../views/header-option-master.html");
+                    //                 // });
+                    //                 // this.get('#/client-registration', function() {
+                    //                 //     $('#maincontainer').load("../views/client.html");
+                    //                 // });
+                    //                 // this.get('#/user-header-mapping', function() {
+                    //                 //     $('#maincontainer').load("../views/user-header-mapping.html");
+                    //                 // });
+                    //                 this.get('#/callcycle', function () {
+                    //                     $('#maincontainer').load("../views/callcycle.html");
+                    //                 });
+
+                    //                 menuuu += `<li class="sidebar-header">
+                    //   Masters
+                    //   </li>
+
+                    //   <li class="sidebar-item active" id="dashboard" onclick="highlight('dashboard')">
+                    //   <a class="sidebar-link" href="#/dashboard">
+                    //   <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    //   </a>
+                    //   </li>
+                    //   <li class="sidebar-item active" id="callcycle" onclick="highlight('callcycle')">
+                    //   <a class="sidebar-link" href="#/callcycle">
+                    //   <i class="align-middle me-2" data-feather="repeat"></i> <span class="align-middle">Call Cycle</span>
+                    //   </a>
+                    //   </li>
+                    //   `;
+                    //             });
+
+                    //             break;
+
+                    default:
+                        var app = $.sammy(function () {
+                            this.get('#/dashboard', function () {
+                                $('#maincontainer').load("../views/dashboard.html");
+                            });
+                            this.get('#/profile', function () {
+                                $('#maincontainer').load("../views/pages-profile.html");
+                            });
+                            menuuu += `<li class="sidebar-header">
+              Personal Info
+              </li>
+
+              <li class="sidebar-item active" id="dashboard" onclick="highlight('dashboard')">
+              <a class="sidebar-link" href="#/dashboard">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+              </a>
+              </li>
+
+              <li class="sidebar-item" id="profile" onclick="highlight('profile')">
+              <a class="sidebar-link" href="#/profile">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+              </a>
+              </li>
+              <li class="sidebar-header">
+              Tools & Components
+              </li>
+
+              <li class="sidebar-item" onclick="highlight('Buttons')">
+              <a class="sidebar-link" href="ui-buttons.html">
+              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
+              </a>
+              </li>
+
+              <li class="sidebar-item" onclick="highlight('Forms')">
+              <a class="sidebar-link" href="ui-forms.html">
+              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
+              </a>
+              </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link" href="ui-cards.html">
+              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
+              </a>
+              </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link" href="ui-typography.html">
+              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
+              </a>
+              </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link" href="icons-feather.html">
+              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
+              </a>
+              </li>
+
+              <li class="sidebar-header">
+              Plugins & Addons
+              </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link" href="charts-chartjs.html">
+              <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
+              </a>
+              </li>
+
+              <li class="sidebar-item">
+              <a class="sidebar-link" href="maps-google.html">
+              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+              </a>
+              </li>`;
+                        });
+
+                }
+
+            }
+            else {
+
+                var app = $.sammy(function () {
+                    this.get('#/dashboard_admin', function () {
+                        $('#maincontainer').load("../views/dashboard_admin.html");
+                    });
+                    this.get('#/log', function () {
+                        $('#maincontainer').load("../views/admin_logs.html");
+                    });
+                    this.get('#/callcycle', function () {
+                        $('#maincontainer').load("../views/callcycle_admin.html");
+                    });
+                    this.get('#/user-master', function () {
+                        $('#maincontainer').load("../views/user-master.html");
+                    });
+                    this.get('#/alarm-inhibit', function () {
+                        $('#maincontainer').load("../views/alarm-inhibit.html");
+                    });
+                    this.get('#/interlock', function () {
+                        $('#maincontainer').load("../views/interlock.html");
+                    });
+                    this.get('#/callcycle', function () {
+                        $('#maincontainer').load("../views/callcycle.html");
+                    });
+
+                    this.get('#/allbeatsoroginal', function () {
+                        $('#maincontainer').load("../views/all-beats-original.html");
+                    });
+
+                    this.get('#/beatmapping', function () {
+                        $('#maincontainer').load("../views/user_beat_mapping.html");
+                    });
+
+                    this.get('#/distributormaster', function () {
+                        $('#maincontainer').load("../views/distributor_master.html");
+                    });
+                    this.get('#/beatdistri_mapping', function () {
+                        $('#maincontainer').load("../views/beat_distributor_mapping.html");
+                    });
+
+
+                    // changes
+                    this.get('#/view_tickets', function () {
+                        $('#maincontainer').load("../views/view_tickets.html");
+                    });
+                    this.get('#/create_ticket', function () {
+                        $('#maincontainer').load("../views/create_ticket.html");
+                    });
+
+
+
+
+
+                    menuuu += `<li class="sidebar-header">
+              Masters
+              </li>
+
+              <li class="sidebar-item active" id="dashboard_admin" onclick="highlight('dashboard_admin')">
+              <a class="sidebar-link" href="#/dashboard_admin">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+              </a>
+              </li>
+           
+            </li>
+
+
+        </li>
+
+              <li class="sidebar-item active" id="view_tickets" onclick="highlight('view_tickets')">
+              <a class="sidebar-link" href="#/view_tickets">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">View Tickets</span>
+              </a>
+              </li>
+
+                <li class="sidebar-item active" id="create_ticket" onclick="highlight('create_ticket')">
+              <a class="sidebar-link" href="#/create_ticket">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Create Tickets</span>
+              </a>
+              </li>
+           
+            </li>
+        
+      
+                  
+              `;
+                });
+
+                // break;
+            }
+
+            $(function () {
                 menuuu += `
                 <li class="sidebar-header">
 						Application
@@ -284,32 +567,31 @@
             </a>
 					</li>`;
                 $(".sidebar-nav").append(menuuu);
-                $("#username").text(localStorage.getItem("userName"));
-                $("#businessname").text((localStorage.getItem("userName")).toUpperCase());
+                $("#username").text(localStorage.getItem("email"));
+                $("#businessname").text((localStorage.getItem("name")).toUpperCase());
                 // $("#proimg").attr("src", src);
                 app.run(url);
                 highlight(name);
             });
         })(jQuery);
-
     </script>
 
-<script>
-  debugger;
-  var name = window.location.href.split('#/')[1];
-  highlight=(id)=>{
-    $(".sidebar-item").removeClass("active");
-    if(id==undefined){
-      var id = window.location.href.split('#/')[1];
-    $("#"+id).addClass("active");
-    }else{
-    // var id = window.location.href.split('#/')[1];
-    $("#"+id).addClass("active");
-    }
+    <script>
+        debugger;
+        var name = window.location.href.split('#/')[1];
+        highlight = (id) => {
+            $(".sidebar-item").removeClass("active");
+            if (id == undefined) {
+                var id = window.location.href.split('#/')[1];
+                $("#" + id).addClass("active");
+            } else {
+                // var id = window.location.href.split('#/')[1];
+                $("#" + id).addClass("active");
+            }
 
-  }
-  // 
-</script>
+        }
+        //
+    </script>
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 

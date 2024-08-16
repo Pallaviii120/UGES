@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .form-container {
+            flex: 2;
+            margin-right: 20px;
+            background-color: #e7f6e7;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .side-panel-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-items: flex-end;
+        }
+
+        .side-panel {
+            width: 100%;
+            max-width: 300px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5em;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.5em;
+            margin-top: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-control-label {
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+
+        .form-group input[type="date"],
+        .form-group select,
+        .form-group textarea,
+        .form-group input[type="text"],
+        .custom-file-input {
+            width: 100%;
+            margin-top: 0.5em;
+        }
+
+        .custom-file {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5em;
+        }
+
+        .custom-file-label {
+            margin-left: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1em;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .custom-select-severity {
+            position: relative;
+            width: 100%;
+            height: 2.4rem;
+            /* Adjust height as needed */
+        }
+
+        .custom-select-severity option {
+            display: flex;
+            align-items: center;
+        }
+
+        .custom-select-severity option::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .custom-select-severity option[value="Low"]::before {
+            background-color: green;
+        }
+
+        .custom-select-severity option[value="Medium"]::before {
+            background-color: orange;
+        }
+
+        .custom-select-severity option[value="High"]::before {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="forms">
+        <h1 class="h3 mb-1">Verification Report</h1>
+        <div class="container">
+
+            <div class="form-container" id="mainpage">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="uploadForm" enctype="multipart/form-data">
+
+                            <div class="generaldetails">
+                                <h3><b><u>General Details</u></b></h3><br>
+
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="state">Survey No</label>
+                                    <input id="survey_no" type="text" name="survey_no" required="" class="form-control"
+                                        placeholder="Enter Survey No">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Survey Completed</label>
+                                    <select name="survey_completed" id="survey_completed"
+                                        class="form-control custom-select-severity">
+                                        <option value="">Select Status</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="state">Terrain</label>
+                                    <input id="terrain_no" type="text" name="terrain_no" required=""
+                                        class="form-control" placeholder="Enter Terrain No">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="message">Upload Photo of Land (File Size
+                                        Limit 20MB)</label><br>
+                                    <label class="form-control-label" for="message"
+                                        style="color: rgb(253, 88, 67);">Allowed Only
+                                        (jpeg/jpg/png/pdf/docx)</label>
+                                    <div class="custom-file">
+                                        <input id="fileland" type="file" class="custom-file-input" name="fileland"
+                                            onchange="handleFileUpload(event)">
+                                    </div>
+                                    <div id="fileland_message"></div>
+                                    <input type="hidden" id="fileland_path" name="fileland_path">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="message">Upload Photo of Meter (File Size
+                                        Limit 20MB)</label><br>
+                                    <label class="form-control-label" for="message"
+                                        style="color: rgb(253, 88, 67);">Allowed Only
+                                        (jpeg/jpg/png/pdf/docx)</label>
+                                    <div class="custom-file">
+                                        <input id="filemeter" type="file" class="custom-file-input" name="filemeter"
+                                            onchange="handleFileUpload(event)">
+                                    </div>
+                                    <div id="filemeter_message"></div>
+                                    <input type="hidden" id="filemeter_path" name="filemeter_path">
+                                </div>
+
+                                <!-- Add more file inputs similarly -->
+
+                            </div>
+
+                            <div class="risksection">
+                                <h3><b><u>Challenges and Risk category</u></b></h3><br>
+
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Major Challenges - Foot print
+                                        (166mX166m)
+                                    </label>
+                                    <select name="major_category" id="major_category"
+                                        class="form-control custom-select-severity">
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Risk Category (Foot Print
+                                        Construction) </label>
+                                    <select name="risk_category" id="risk_category"
+                                        class="form-control custom-select-severity">
+                                        <option value="">Select Risk Category</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Major Challenges - Falling
+                                        Distance (223m)
+                                    </label>
+                                    <select name="major_falling" id="major_falling"
+                                        class="form-control custom-select-severity">
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Risk Category (Falling
+                                        Distance)
+                                    </label>
+                                    <select name="risk_falling" id="risk_falling"
+                                        class="form-control custom-select-severity">
+                                        <option value="">Select Risk Category</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Major Challenges - Noise (500m)
+                                    </label>
+                                    <select name="major_noise" id="major_noise"
+                                        class="form-control custom-select-severity">
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Risk Category (Noise)
+                                    </label>
+                                    <select name="risk_noise" id="risk_noise"
+                                        class="form-control custom-select-severity">
+                                        <option value="">Select Risk Category</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Overall Risk Category
+                                    </label>
+                                    <select name="overall_risk" id="overall_risk"
+                                        class="form-control custom-select-severity">
+                                        <option value="">Select Overall Risk Category</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Major reason for overall risk
+                                    </label>
+                                    <select name="overall_risk_major" id="overall_risk_major"
+                                        class="form-control custom-select-severity">
+
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="mitigation">
+                                <h3><b><u>Mitigation</u></b></h3><br>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="severity_dd">Shifting Requirement</label>
+                                    <select name="shifting_req" id="shifting_req"
+                                        class="form-control custom-select-severity">
+                                        <option value="">Select Shift</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="physical_condition">
+                                <h3><b><u>Physical Condition Of Site</u></b></h3><br>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="state">Land Type</label>
+                                    <input id="land_type" type="text" name="land_type" required="" class="form-control"
+                                        placeholder="Enter Land Type">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="state">Soil Type</label>
+                                    <input id="soil_type" type="text" name="soil_type" required="" class="form-control"
+                                        placeholder="Enter Soil Type">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="message">Upload file of Soil
+                                        (File Size
+                                        Limit 20MB)</label><br>
+                                    <label class="form-control-label" for="message"
+                                        style="color: rgb(253, 88, 67);">Allowed
+                                        Only
+                                        (jpeg/jpg/png/pdf/docx)</label>
+                                    <div class="custom-file">
+                                        <input id="soilfile" type="file" class="custom-file-input" name="soilfile"
+                                            onchange="handleFileUpload(event)">
+                                    </div>
+                                    <div id="soilfile_message"></div>
+                                    <input type="hidden" id="soilfile_path" name="soilfile_path">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="state">Access Road</label>
+                                    <input id="access_road" type="text" name="access_road" required=""
+                                        class="form-control" placeholder="Enter Access Road">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="purpose">Key Challenges</label>
+                                    <textarea id="key_challenge" name="key_challenge" required="" class="form-control"
+                                        placeholder="Enter key challenges"></textarea>
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+                            <!-- <div class="form-group">
+                                <input type="button" id="create_ticket" value="Submit data" class="btn btn-success"
+                                    onclick="saveticketdetails()">
+                            </div> -->
+                            <div class="form-group">
+                                <input type="button" id="nextbtn" value="Next" class="btn btn-info">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="side-panel-container">
+                <div class="side-panel" id="side-panel">
+                    <h3><b><u>Location Details</u></b></h3>
+                    <div class="form-group">
+                        <label class="form-control-label" for="state">State</label>
+                        <select name="state_name" id="state_name" class="form-control"
+                            onchange="getdistrictlist(this)"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" for="district">District</label>
+                        <select name="district_name" id="district_name" class="form-control"
+                            onchange="gettalukalist(this)"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" for="purpose">Taluka</label>
+                        <select name="taluka_name" id="taluka_name" class="form-control"
+                            onchange="getvillagelist(this)"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" for="purpose">Village</label>
+                        <select name="village_name" id="village_name" class="form-control"
+                            onchange="getlocationno(document.getElementById('state_name'))"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" for="state">Location Number</label>
+                        <select name="location" class="form-control" id="location"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="forms2">
+        <div class="form-container" id="uploaddirectionphoto">
+            <div class="card">
+                <h1 style="text-align: center;  margin-bottom: 20px; margin-top: 20px;">
+                    <b>Upload Photos</b>
+                </h1>
+                <div class="card-body">
+                    <div class="surroundings">
+                        <h3><b><u>Direction - Wise Photographs</u></b></h3><br>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="east">East Direction (File Size Limit
+                                    20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="east" type="file" class="custom-file-input" name="east"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="east_message"></div>
+                                <input type="hidden" id="east_path" name="east_path">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="west">West Direction (File Size Limit
+                                    20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="west" type="file" class="custom-file-input" name="west"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="west_message"></div>
+                                <input type="hidden" id="west_path" name="west_path">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="north">North Direction (File Size Limit
+                                    20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="north" type="file" class="custom-file-input" name="north"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="north_message"></div>
+                                <input type="hidden" id="north_path" name="north_path">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="south">South Direction (File Size Limit
+                                    20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="south" type="file" class="custom-file-input" name="south"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="south_message"></div>
+                                <input type="hidden" id="south_path" name="south_path">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="north_east">North - East Direction (File Size
+                                    Limit 20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="north_east" type="file" class="custom-file-input" name="north_east"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="north_east_message"></div>
+                                <input type="hidden" id="north_east_path" name="north_east_path">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="south_east">South - East Direction (File Size
+                                    Limit 20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="south_east" type="file" class="custom-file-input" name="south_east"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="south_east_message"></div>
+                                <input type="hidden" id="south_east_path" name="south_east_path">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="south_west">South - West Direction (File Size
+                                    Limit 20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="south_west" type="file" class="custom-file-input" name="south_west"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="south_west_message"></div>
+                                <input type="hidden" id="south_west_path" name="south_west_path">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="north_west">North - West Direction (File Size
+                                    Limit 20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="north_west" type="file" class="custom-file-input" name="north_west"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="north_west_message"></div>
+                                <input type="hidden" id="north_west_path" name="north_west_path">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- actual photograph -->
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="surroundings">
+                        <h3><b><u>Actual Photographs</u></b></h3><br>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="residential">Residential House (307 Mtr-W) (File
+                                    Size Limit 20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="residential" type="file" class="custom-file-input" name="residential"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="residential_message"></div>
+                                <input type="hidden" id="residential_path" name="residential_path">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="dwelling_1">Dwelling-1 (299 Mtr-W) (File Size
+                                    Limit 20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="dwelling_1" type="file" class="custom-file-input" name="dwelling_1"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="dwelling_1_message"></div>
+                                <input type="hidden" id="dwelling_1_path" name="dwelling_1_path">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="dwelling_2">Dwelling-2 (296 Mtr-W) (File Size
+                                    Limit 20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="dwelling_2" type="file" class="custom-file-input" name="dwelling_2"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="dwelling_2_message"></div>
+                                <input type="hidden" id="dwelling_2_path" name="dwelling_2_path">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-control-label" for="dwelling_3">Dwelling-3 (446 Mtr-SW) (File Size
+                                    Limit 20MB)</label><br>
+                                <label class="form-control-label text-danger">Allowed Only
+                                    (jpeg/jpg/png/pdf/docx)</label>
+                                <div class="custom-file">
+                                    <input id="dwelling_3" type="file" class="custom-file-input" name="dwelling_3"
+                                        onchange="handleFileUpload(event)">
+                                </div>
+                                <div id="dwelling_3_message"></div>
+                                <input type="hidden" id="dwelling_3_path" name="dwelling_3_path">
+                            </div>
+                        </div>
+
+                        <!-- You can add more form rows here if needed -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../static/js/wind_farm.js"></script>
+</body>
+
+</html>

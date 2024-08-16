@@ -1,0 +1,61 @@
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> -->
+<style>
+    table, th, td {
+  border:1px solid #d1d1d1;
+  text-align: center;
+  font-size: 11px;
+}
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+  font-size: 11px;
+}
+
+
+</style>
+
+<div class="container-fluid p-0">
+
+    <h1 class="h3 mb-3"><strong>Call Cycle</strong></h1>
+
+    <div class="row" id="callcycle_list">
+        <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+            <div class="card flex-fill w-100">
+                <div class="card-header" style="border-bottom: 3px solid #e3beff;">
+                    <button class="btn btn-primary float-end" onclick="bulkuploadcallcycle();" id="bulkupbtn" name="bulkupbtn">Bulk Upload Call Cycle</button>
+                    <button class="btn btn-primary float-end" onclick="addcallcycle();" style="margin-right: 5px;">Add Call Cycle</button>
+                </div>
+                <div class="card-body px-4">
+                    <table id="makerTable12" class="table table-responsive" cellspacing="0" width="100%" style="overflow-x:auto;">
+                        <thead style="font-size: 11px;">
+                            <tr style="background: #e3beff;color: #6200af;">
+                                <th>Region</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>ASM</th>
+                                <th>SO</th>
+                                <th>SR</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                                <th>Status</th>
+                                <th>Remark</th>
+                                <!-- <th>View</th> -->
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Modal -->
+
+
+<script src="../static/js/viewcallcycle.js"></script>
+
+
+
+

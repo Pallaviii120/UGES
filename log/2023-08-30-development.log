@@ -1,0 +1,9 @@
+
+error [Wed Aug 30 2023 12:26:57 GMT+0530 (India Standard Time)]  Database connection was refused.ECONNREFUSED
+info [Wed Aug 30 2023 12:26:57 GMT+0530 (India Standard Time)]  Connection release.
+
+error [Wed Aug 30 2023 12:28:49 GMT+0530 (India Standard Time)]  Database connection was refused.ECONNREFUSED
+info [Wed Aug 30 2023 12:28:49 GMT+0530 (India Standard Time)]  Connection release.
+
+error [Wed Aug 30 2023 12:32:58 GMT+0530 (India Standard Time)]  Database connection was refused.ECONNREFUSED
+info [Wed Aug 30 2023 12:32:58 GMT+0530 (India Standard Time)]  Connection release.

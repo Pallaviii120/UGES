@@ -1,0 +1,150 @@
+<style>
+    table,
+    th,
+    td {
+      border: 1px solid #d1d1d1;
+      text-align: center;
+      border-bottom: none !important;
+    }
+  
+    table tr {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: .35em;
+    }
+    
+</style>
+  
+  <div class="container-fluid p-0">
+    <div id="beats_list">
+    <h1 class="h3 mb-3">All-<strong>Beats</strong></h1>
+    <div class="row" >
+      <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+        <div class="card flex-fill w-100">
+          <div class="card-header" style="border-bottom: 3px solid #e3beff;">
+            <button class="btn btn-primary float-end" onclick="addbeat();">Add Beat</button>
+            <!-- <button class="btn btn-primary float-end" onclick="addbulkuser();" style="margin-right: 5px;">Add Bulk User</button> -->
+          </div>
+          <div class="card-body px-4">
+            <table id="makerTable12" class="table table-striped table-bordered" cellspacing="0" width="100%">
+              <thead>
+                <tr style="background: #e3beff;color: #6200af;">
+                  <th>Route Name</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Region</th>
+                  <th>Distributor</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  
+    <!--******************* Add beat form   *********************-->
+    <div class="row" id="beats_form">
+
+      <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h3><b style="color: #6200af;">Please Enter Beats Details !</b></h3>
+          </div>
+          <div class="card-body px-4 col-xl-12 col-12">
+            <div class="row mb-3">
+                <input type="hidden" id="route_id">
+                <input type="hidden" id="id">
+                <div class="col">
+                    <label class="form-label">Client</label>
+                    <select class="form-select mb-3" placeholder="Select Client" name="s_client" id="s_client" onchange="getDistributors()">
+                        <option value=''>Select Client</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label">Distributor Name</label>
+                    <select class="form-select mb-3" placeholder="Select City" name="s_distributor_name" id="s_distributor_name" onchange="getRegions()">
+                        <option selected="">Select Distributor</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Route Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Route Name" name="s_route_name" id="s_route_name">
+                </div>
+                <div class="col">
+                    <label class="form-label">Region</label><br>
+                    <select class="form-select mb-3" placeholder="Select Region" name="s_region" id="s_region" onchange="get_region_State(this.value)">
+                        <option value=''>Select Region</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">State</label>
+                    <select class="form-select mb-3" placeholder="Select State" name="s_state" id="s_state" onchange="get_city()">
+                        <option value=''>Select State</option>
+                    </select>
+                </div>
+        
+                <div class="col">
+                    <label class="form-label">City</label>
+                    <select class="form-select mb-3" placeholder="Select City" name="s_city" id="s_city">
+                        <option selected="">Select City</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="row mb-3">
+                <div class="col" id="eff_date">
+                    <label class="form-label">Effective Date</label>
+                    <input type="datetime-local" class="form-control" name="d_effective" id="d_effective">
+                </div>
+        
+                <div class="col">
+                    <label class="form-label">Beat Status</label>
+                    <select class="form-select mb-3" name="s_status" id="s_status">
+                        <option value="">Select Beat Status</option>
+                        <option value="0">Active</option>
+                        <option value="1">In-Active</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="card-footer">
+                        <button class="btn btn-primary" onclick="save_beat()" id="submit">Submit</button>
+                        <button class="btn btn-success" onclick="update_beats_data_org()" id="update">Update</button>
+                        <button class="btn btn-danger" onclick="back();">Back</button>
+                        <button class="btn btn-warning" onclick="clearData();">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+         
+        </div>
+      </div>
+  
+    </div>
+
+  
+  </div>
+
+  <script src="../static/js/all-beats-original.js"></script>
+ 
+  <script>
+  
+  
+  
+      // $('#user_bulk').hide();
+  </script>
+ 
+
+  
