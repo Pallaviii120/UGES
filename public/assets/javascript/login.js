@@ -31,29 +31,13 @@
                 //     document.getElementById("loader").setAttribute("data-text", "Loading...");
                 // },
                 success: function (result) {
+                    var data = result.data
                     alertify.success(result.mess +'\n' +result.mess_body);
-                    localStorage.setItem("clientID", result.data.clientID);
-                    localStorage.setItem("userID", result.data.userID);
-					localStorage.setItem("userName", result.data.userName);
-                    localStorage.setItem("position", result.data.position);
-					// localStorage.setItem("path", result.data.s_img_path);
-					// localStorage.setItem("iname", result.data.s_image_name);
-                    // localStorage.setItem("reg_id", result.data.n_bsns_reg_id);
-                    // localStorage.setItem("acc_type", result.data.s_acc_type);
-                    // localStorage.setItem("bsns_type", result.data.bsns_type);
-                    window.location = "/main";
-                    //localStorage.setItem("role", result.data.id);                     
-
-                    // localStorage.setItem("id", result.data.id);
-                    // localStorage.setItem("role", result.data.role);
-                    // localStorage.setItem("profile", result.data.n_img_path);
-
-
-
-                    // localStorage.setItem("myidentity", `auth2 ${result.token}`);
-                    // getnotify('success', undefined, 1, 'stack_top_right', result.mess, result.mess_body);
-
-
+                    localStorage.setItem("role",data.role)
+                    localStorage.setItem("email",data.username)
+                    localStorage.setItem("name",data.name)
+                    localStorage.setItem("id",data.id)
+                    window.location = "/main.html";
                 },
                 error: function (err) {
                     // alert(err.responseJSON.mess +'\n'+err.responseJSON.mess_body)

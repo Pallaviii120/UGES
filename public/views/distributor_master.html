@@ -1,0 +1,163 @@
+<style>
+    table,
+    th,
+    td {
+      border: 1px solid #d1d1d1;
+      text-align: center;
+    }
+  
+    table tr {
+      background-color: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: .35em;
+    }
+  </style>
+  
+  <div class="container-fluid p-0">
+    <h1 class="h3 mb-3">All <strong>Distributors</strong></h1>
+  
+    <div class="row" id="beats_list">
+      <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+        <div class="card flex-fill w-100">
+          <div class="card-header" style="border-bottom: 3px solid #e3beff;">
+            <button class="btn btn-primary float-end" onclick="add_dist();">Add Distributor</button>
+          </div>
+          <div class="card-body px-4">
+            <table id="dist_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+              <thead>
+                <tr style="background: #e3beff;color: #6200af;">
+                 
+                  <th>Distributor Name</th> 
+                  <th>Client</th>
+                  <th>Region</th>
+                  <th>State</th>
+                  <th>City</th>    
+                  <th>Address</th>  
+                  <th>Action</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!--******************* Add beat form   *********************-->
+    <div class="row" id="beats_form">
+      <div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h3><b style="color: #6200af;">Please Enter Distributor Details !</b></h3>
+          </div>
+          <div class="card-body px-4 col-xl-12 col-12">
+            <form>
+              <input type="hidden" id="id">
+              <div class="row mb-3">
+                <div class="col">
+                  <label class="form-label">Client</label>
+                  <select class="form-select mb-3" placeholder="Select Client" name="s_client" id="s_client" onchange="getval(this.value);">
+                    <option value=''>Select Client</option>
+                  </select>
+                </div>
+                <div class="col">
+                    <input type="text" id="distid" hidden >
+                    <label class="form-label">Distributor Name</label>
+                    <input type="text" class="form-control mb-3" name="distri_name" id="distri_name"
+                        placeholder="Enter Distributor Name" autocomplete="off">
+                </div>
+                <div class="col">
+                  <label class="form-label">Distributor ID</label>
+                  <input type="text" class="form-control mb-3" name="siteid" id="siteid"
+                      placeholder="Distributor Code" disabled>
+                </div>
+              </div>
+  
+              <div class="row mb-3">
+                <div class="col">
+                  <label class="form-label">Distributor Code</label>
+                  <input type="text" class="form-select mb-3" name="distcode" id="distcode"
+                      placeholder="Distributor Code" disabled>
+                </div>
+
+                <div class="col">
+                    <label class="form-label">Region</label><br>
+                    <select class="form-select mb-3" placeholder="Select Region" name="s_region" id="s_region" onchange="get_region_State(this.value)">
+                      <option value=''>Select Region</option>
+                    </select>
+                  </div>
+              </div>
+  
+              <div class="row mb-3">
+                <div class="col">
+                  <label class="form-label">State</label>
+                  <select class="form-select mb-3" placeholder="Select State" name="s_state" id="s_state" 
+                 onchange="get_city()">
+                    <option value=''>Select State</option>
+                  </select>
+                </div>
+                <div class="col">
+                    <label class="form-label">City</label>
+                    <select class="form-select mb-3" placeholder="Select City" name="s_city" id="s_city">
+                      <option value="">Select City</option>
+                    </select>
+                  </div>
+              </div>
+  
+              <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="form-control mb-3" name="address" id="address">
+                  </div>
+                  <div class="col">
+                    <label class="form-label">Effective Date</label>
+                    <input type="datetime-local" class="form-control mb-3" name="d_effective" id="d_effective">
+                  </div>
+              </div>
+  
+              <div class="row mb-3">
+                <div class="col">
+                  <label class="form-label">Status</label>
+                  <select class="form-select mb-3" name="deleted_status" id="deleted_status">
+                    <option value=''>Select Deleted Status</option>
+                    <option value="0">Active</option>
+                    <option value="1">De-Active</option>
+                  </select>
+                </div>
+            </div>
+
+
+              <div class="row mb-3">
+                <div class="col mb-3">
+                     <button class="btn btn-primary" onclick="insert_beats_data()" id="submit">Submit</button>
+                    <button class="btn btn-success" onclick="update_beats_data()" id="update">Update</button>
+                    <button class="btn btn-danger" onclick="back();">Back</button>
+                    <button class="btn btn-warning" onclick="cleardata();">Clear</button>
+                </div>
+                </div>
+            
+  
+            </form>
+          </div>
+       
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+  <script>
+  
+    /*to change delete status 0 or 1*/
+    // chagestatus=function(selectedValue){
+    //   debugger;
+    // if(selectedValue==='In-Active')
+    // {
+    //   $("#deleted_status").val('1');
+    // }else{
+    //   $("#deleted_status").val('0');
+    // }
+    // }
+   
+  </script>
+  <script src="../static/js/distributor_master.js"></script>

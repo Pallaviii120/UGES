@@ -1,0 +1,18 @@
+
+error [Mon Aug 28 2023 10:45:58 GMT+0530 (India Standard Time)]  Database connection was refused.ECONNREFUSED
+info [Mon Aug 28 2023 10:45:58 GMT+0530 (India Standard Time)]  Connection release.
+
+error [Mon Aug 28 2023 10:47:13 GMT+0530 (India Standard Time)]  Database connection was refused.ECONNREFUSED
+info [Mon Aug 28 2023 10:47:13 GMT+0530 (India Standard Time)]  Connection release.
+
+error [Mon Aug 28 2023 10:47:40 GMT+0530 (India Standard Time)]  Database connection was refused.ECONNREFUSED
+info [Mon Aug 28 2023 10:47:40 GMT+0530 (India Standard Time)]  Connection release.
+
+error [Mon Aug 28 2023 10:49:02 GMT+0530 (India Standard Time)]  Database connection was refused.ECONNREFUSED
+info [Mon Aug 28 2023 10:49:02 GMT+0530 (India Standard Time)]  Connection release.
+
+error [Mon Aug 28 2023 10:52:55 GMT+0530 (India Standard Time)]  Database connection was refused.ECONNREFUSED
+info [Mon Aug 28 2023 10:52:55 GMT+0530 (India Standard Time)]  Connection release.
+
+error [Mon Aug 28 2023 10:53:22 GMT+0530 (India Standard Time)]  Database connection was refused.ECONNREFUSED
+info [Mon Aug 28 2023 10:53:22 GMT+0530 (India Standard Time)]  Connection release.

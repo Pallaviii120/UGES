@@ -1,20 +1,20 @@
 var mysql = require('mysql');
 var email = require("emailjs");
 
-var extraCode = require("../utils/extraCode");
+// var extraCode = require("../utils/extraCode");
 
-var logger = require('logger').createLogger(); // logs to STDOUT
-var logger = require('logger').createLogger('./log/' + extraCode.formatdateYYMMDD(new Date()) + '-development.log');
+// var logger = require('logger').createLogger(); // logs to STDOUT
+// var logger = require('logger').createLogger('./log/' + extraCode.formatdateYYMMDD(new Date()) + '-development.log');
 
 
-var pool = mysql.createPool({
-    connectionLimit: 100000,
-    host: 'localhost',
-    user: 'root',
-    password: 'Admin@123',
-    database: 'db_evim_new',
-    multipleStatements: true
-})
+// var pool = mysql.createPool({
+//         connectionLimit: 100000,
+//         host: 'localhost',
+//         user: 'root',
+//         password: 'Password@123',
+//         database: 'itsm_project',
+//         multipleStatements: true
+//     })
     // mailserver = email.server.connect({
     //     user: "",
     //     password: "",
@@ -23,27 +23,27 @@ var pool = mysql.createPool({
     //     //port:465
     // })
 
-pool.getConnection((err, connection) => {
-    if (err) {
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            logger.error('Database connection was closed.' + err.code)
-            console.error('Database connection was closed.')
-        }
-        if (err.code === 'ER_CON_COUNT_ERROR') {
-            logger.error('Database has too many connections.' + err.code)
-            console.error('Database has too many connections.')
-        }
-        if (err.code === 'ECONNREFUSED') {
-            logger.error('Database connection was refused.' + err.code)
-            console.error('Database connection was refused.')
-        }
-    }
-    if (connection) connection.release()
+// pool.getConnection((err, connection) => {
+//     if (err) {
+//         if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+//             logger.error('Database connection was closed.' + err.code)
+//             console.error('Database connection was closed.')
+//         }
+//         if (err.code === 'ER_CON_COUNT_ERROR') {
+//             logger.error('Database has too many connections.' + err.code)
+//             console.error('Database has too many connections.')
+//         }
+//         if (err.code === 'ECONNREFUSED') {
+//             logger.error('Database connection was refused.' + err.code)
+//             console.error('Database connection was refused.')
+//         }
+//     }
+//     if (connection) connection.release()
 
-    logger.info('Connection release.')
-    return
-})
-module.exports = { pool };
+//     logger.info('Connection release.')
+//     return
+// })
+// module.exports = { pool,connectionConfig: pool.config.connectionConfig};
 /* module.exports = {
     connection: mysql.createConnection({
         connectionLimit: 100000, //focus it
@@ -65,3 +65,33 @@ module.exports = { pool };
 	port:465
 })
 */
+
+const pool = mysql.createPool({
+    connectionLimit: 100000, // Use a reasonable limit for connections
+    host: 'localhost',
+    user: 'root',
+    password: 'Password@123',
+    database: 'db_uges',
+    multipleStatements: true
+});
+
+pool.getConnection((err, connection) => {
+    if (err) {
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            console.error('Database connection was closed.');
+        }
+        if (err.code === 'ER_CON_COUNT_ERROR') {
+            console.error('Database has too many connections.');
+        }
+        if (err.code === 'ECONNREFUSED') {
+            console.error('Database connection was refused.');
+        }
+    }
+
+    if (connection) connection.release();
+    console.log('MySQL pool connected: threadId ' + connection.threadId);
+    return;
+});
+
+module.exports = pool;
+
